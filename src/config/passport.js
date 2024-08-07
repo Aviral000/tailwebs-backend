@@ -10,7 +10,6 @@ const options = {
 const jwtStrategy = new JwtStrategy(options, async (payload, done) => {
     try {
         const user = await findTeacherByUsername({ username: payload.username });
-        console.log(user);
 
         if (user) {
             return done(null, user);
