@@ -13,13 +13,16 @@ const addStudent = async (data) => {
     try {
         const { name, subject, marks } = data;
         let student = await Student.findOne({ name, subject });
+        let newRegister = false;
         if (student) {
             student.marks = marks;
+            newRegister = false;
         } else {
             student = new Student({ name, subject, marks });
+            newRegister = true;
         }
         await student.save();
-        return student;
+        return [student, newRegister];
     } catch (error) {
         throw new Error(error);
     }
