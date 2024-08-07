@@ -22,7 +22,7 @@ const addStudent = async (data) => {
             newRegister = true;
         }
         await student.save();
-        return [student, newRegister];
+        return {student, newRegister};
     } catch (error) {
         throw new Error(error);
     }

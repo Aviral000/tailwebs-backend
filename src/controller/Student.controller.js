@@ -11,8 +11,8 @@ const getRequest = async (req, res) => {
 
 const addRequest = async (req, res) => {
     try {
-        const students = await addStudent(req.body);
-        res.status(200).json(students);
+        const {student, newRegister} = await addStudent(req.body);
+        res.status(200).json(student, newRegister);
     } catch (error) {
         res.status(401).json(error.message);
     }
