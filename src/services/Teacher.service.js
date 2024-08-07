@@ -7,6 +7,10 @@ const SECRET_KEY = Token_Key.Private_key;
 
 const registerTeacher = async (username, password) => {
   try {
+    if(password.length < 6) {
+      throw new Error("Password should be atleast 6 charactor long")
+    }
+
     let teacher = await Teacher.findOne({ username });
 
     if (!teacher) {
